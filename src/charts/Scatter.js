@@ -118,14 +118,14 @@ export default class Scatter {
 
     if (w.config.series[i].data[dataPointIndex]) {
       if (w.config.series[i].data[dataPointIndex].fillColor) {
-        pathFillCircle = w.config.series[i].data[dataPointIndex].fillColor
+        pathFillCircle.path = w.config.series[i].data[dataPointIndex].fillColor
       }
     }
 
     circle.attr({
       cx: x,
       cy: y,
-      fill: pathFillCircle,
+      fill: pathFillCircle.path,
       stroke: markerConfig.pointStrokeColor,
       strokeWidth: markerConfig.pWidth
     })

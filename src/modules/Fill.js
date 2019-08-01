@@ -177,7 +177,7 @@ class Fill {
       pathFill = defaultColor
     }
 
-    return pathFill
+    return { path: pathFill, opacity: fillOpacity }
   }
 
   getFillType(seriesIndex) {

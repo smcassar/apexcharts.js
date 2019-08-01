@@ -163,7 +163,7 @@ class Radar {
           strokeWidth: Array.isArray(w.config.stroke.width)
             ? w.config.stroke.width[i]
             : w.config.stroke.width,
-          fill: 'none',
+          fill: { path: 'none', opacity: 1 },
           drawShadow: false
         })
 
