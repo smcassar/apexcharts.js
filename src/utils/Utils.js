@@ -2,6 +2,7 @@
  ** Generic functions which are not dependent on ApexCharts
  */
 
+// list of valid css color names
 const CSS_COLOR_NAMES = [
   'aliceblue',
   'antiquewhite',
@@ -345,16 +346,12 @@ class Utils {
     }
   }
 
+  // check if the provided color is a css color name
   static isNamedCssColor(color) {
     return !!color && CSS_COLOR_NAMES.includes(color.toLowerCase())
   }
 
-  static isCssColor(color) {
-    return (
-      !!color && (!!color.match(/^(#|(rgb|hsl)a?\()/) || isNamedCssColor(color))
-    )
-  }
-
+  // check if the provided color is a css variable (eg: 'var(--primary)')
   static isCssVar(color) {
     return !!color && color.startsWith('var(--')
   }
