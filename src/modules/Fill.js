@@ -124,13 +124,11 @@ class Fill {
       fillColor = opts.color
     }
 
-    if (Utils.isCssVar(fillColor) || Utils.isNamedCssColor(fillColor)) {
-      if (fillColor.indexOf('rgb') === -1) {
-        defaultColor = Utils.hexToRgba(fillColor, fillOpacity)
-      } else {
-        if (fillColor.indexOf('rgba') > -1) {
-          fillOpacity = 0 + '.' + Utils.getOpacityFromRGBA(fillColor)
-        }
+    if (fillColor.indexOf('rgb') === -1) {
+      defaultColor = Utils.hexToRgba(fillColor, fillOpacity)
+    } else {
+      if (fillColor.indexOf('rgba') > -1) {
+        fillOpacity = 0 + '.' + Utils.getOpacityFromRGBA(fillColor)
       }
     }
 
