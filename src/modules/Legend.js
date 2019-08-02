@@ -173,6 +173,10 @@ class Legend {
       }
 
       let elLegend = document.createElement('div')
+      elLegend.classList.add(
+        `series-${i}`,
+        w.config.series[i].type || w.config.chart.type
+      )
 
       let elLegendText = document.createElement('span')
       elLegendText.classList.add('apexcharts-legend-text')
@@ -448,7 +452,7 @@ class Legend {
     stylesheet.setAttribute('type', 'text/css')
 
     const text = `
-    
+
       .apexcharts-legend {
         display: flex;
         overflow: auto;
@@ -468,7 +472,7 @@ class Legend {
       }
 
       .apexcharts-legend.position-bottom.center, .apexcharts-legend.position-top.center {
-        justify-content: center;  
+        justify-content: center;
       }
 
       .apexcharts-legend.position-bottom.right, .apexcharts-legend.position-top.right {
@@ -500,7 +504,7 @@ class Legend {
         cursor: pointer;
         margin-right: 3px;
       }
-      
+
       .apexcharts-legend.right .apexcharts-legend-series, .apexcharts-legend.left .apexcharts-legend-series{
         display: inline-block;
       }
