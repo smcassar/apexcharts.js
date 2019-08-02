@@ -2,156 +2,7 @@
  ** Generic functions which are not dependent on ApexCharts
  */
 
-// list of valid css color names
-const CSS_COLOR_NAMES = [
-  'aliceblue',
-  'antiquewhite',
-  'aqua',
-  'aquamarine',
-  'azure',
-  'beige',
-  'bisque',
-  'black',
-  'blanchedalmond',
-  'blue',
-  'blueviolet',
-  'brown',
-  'burlywood',
-  'cadetblue',
-  'chartreuse',
-  'chocolate',
-  'coral',
-  'cornflowerblue',
-  'cornsilk',
-  'crimson',
-  'cyan',
-  'darkblue',
-  'darkcyan',
-  'darkgoldenrod',
-  'darkgray',
-  'darkgrey',
-  'darkgreen',
-  'darkkhaki',
-  'darkmagenta',
-  'darkolivegreen',
-  'darkorange',
-  'darkorchid',
-  'darkred',
-  'darksalmon',
-  'darkseagreen',
-  'darkslateblue',
-  'darkslategray',
-  'darkslategrey',
-  'darkturquoise',
-  'darkviolet',
-  'deeppink',
-  'deepskyblue',
-  'dimgray',
-  'dimgrey',
-  'dodgerblue',
-  'firebrick',
-  'floralwhite',
-  'forestgreen',
-  'fuchsia',
-  'gainsboro',
-  'ghostwhite',
-  'gold',
-  'goldenrod',
-  'gray',
-  'grey',
-  'green',
-  'greenyellow',
-  'honeydew',
-  'hotpink',
-  'indianred',
-  'indigo',
-  'ivory',
-  'khaki',
-  'lavender',
-  'lavenderblush',
-  'lawngreen',
-  'lemonchiffon',
-  'lightblue',
-  'lightcoral',
-  'lightcyan',
-  'lightgoldenrodyellow',
-  'lightgray',
-  'lightgrey',
-  'lightgreen',
-  'lightpink',
-  'lightsalmon',
-  'lightseagreen',
-  'lightskyblue',
-  'lightslategray',
-  'lightslategrey',
-  'lightsteelblue',
-  'lightyellow',
-  'lime',
-  'limegreen',
-  'linen',
-  'magenta',
-  'maroon',
-  'mediumaquamarine',
-  'mediumblue',
-  'mediumorchid',
-  'mediumpurple',
-  'mediumseagreen',
-  'mediumslateblue',
-  'mediumspringgreen',
-  'mediumturquoise',
-  'mediumvioletred',
-  'midnightblue',
-  'mintcream',
-  'mistyrose',
-  'moccasin',
-  'navajowhite',
-  'navy',
-  'oldlace',
-  'olive',
-  'olivedrab',
-  'orange',
-  'orangered',
-  'orchid',
-  'palegoldenrod',
-  'palegreen',
-  'paleturquoise',
-  'palevioletred',
-  'papayawhip',
-  'peachpuff',
-  'peru',
-  'pink',
-  'plum',
-  'powderblue',
-  'purple',
-  'red',
-  'rosybrown',
-  'royalblue',
-  'saddlebrown',
-  'salmon',
-  'sandybrown',
-  'seagreen',
-  'seashell',
-  'sienna',
-  'silver',
-  'skyblue',
-  'slateblue',
-  'slategray',
-  'slategrey',
-  'snow',
-  'springgreen',
-  'steelblue',
-  'tan',
-  'teal',
-  'thistle',
-  'tomato',
-  'turquoise',
-  'violet',
-  'wheat',
-  'white',
-  'whitesmoke',
-  'yellow',
-  'yellowgreen'
-]
+import { CSS_COLOR_NAMES, CSS_COLOR_NAME_VALUES } from './ColorNames'
 
 class Utils {
   static bind(fn, me) {
@@ -358,8 +209,14 @@ class Utils {
 
   // http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb#answer-12342275
   static hexToRgba(hex = '#999999', opacity = 0.6) {
-    if (this.isCssVar(hex) || this.isNamedCssColor(hex)) {
+    // cant modify a css variable so we just return it
+    if (this.isCssVar(hex)) {
       return hex
+    }
+
+    // map a css named color to its hex counterpart
+    if (this.isNamedCssColor(hex)) {
+      hex = CSS_COLOR_NAME_VALUES[hex.toLowerCase()]
     }
 
     if (hex.substring(0, 1) !== '#') {
@@ -438,8 +295,14 @@ class Utils {
   // beautiful color shading blending code
   // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
   shadeColor(p, color) {
-    if (Utils.isCssVar(color) || Utils.isNamedCssColor(color)) {
+    // cant modify a css variable so we just return it
+    if (Utils.isCssVar(color)) {
       return color
+    }
+
+    // map a css named color to its hex counterpart
+    if (Utils.isNamedCssColor(color)) {
+      color = CSS_COLOR_NAME_VALUES[color.toLowerCase()]
     }
 
     if (color.length > 7) return this.shadeRGBColor(p, color)
