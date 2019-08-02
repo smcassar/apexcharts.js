@@ -228,7 +228,7 @@ class Pie {
             ? this.lineColorArr[i]
             : this.lineColorArr,
         strokeWidth: this.strokeWidth,
-        fill: pathFill.path,
+        fill: pathFill.fill,
         fillOpacity: w.config.fill.opacity,
         classes: `apexcharts-pie-area apexcharts-${
           w.config.chart.type

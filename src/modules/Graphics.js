@@ -235,7 +235,7 @@ class Graphics {
       d,
       stroke,
       strokeWidth,
-      fill: fill.path,
+      fill: fill.fill,
       fillOpacity: fill.opacity,
       classes: className,
       strokeLinecap,

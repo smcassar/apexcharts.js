@@ -411,7 +411,7 @@ class Line {
             i: i
           })
         } else {
-          lineFill = { path: w.globals.stroke.colors[realIndex], opacity: 1 }
+          lineFill = { fill: w.globals.stroke.colors[realIndex], opacity: 1 }
         }
 
         for (let p = 0; p < linePaths.length; p++) {
@@ -419,12 +419,12 @@ class Line {
             ...defaultRenderedPathOptions,
             pathFrom: pathFromLine,
             pathTo: linePaths[p],
-            stroke: lineFill.path,
+            stroke: lineFill.fill,
             strokeWidth: Array.isArray(w.config.stroke.width)
               ? w.config.stroke.width[realIndex]
               : w.config.stroke.width,
             strokeLineCap: w.config.stroke.lineCap,
-            fill: { path: 'none', opacity: 1 }
+            fill: { fill: 'none', opacity: 1 }
           })
 
           elSeries.add(renderedPath)

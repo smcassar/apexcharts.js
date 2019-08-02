@@ -155,7 +155,7 @@ class Radial extends Pie {
 
       let elPath = graphics.drawPath({
         d: '',
-        stroke: pathFill.path,
+        stroke: pathFill.fill,
         strokeWidth: (strokeWidth * parseInt(trackConfig.strokeWidth)) / 100,
         fill: 'none',
         strokeOpacity: trackConfig.opacity,
@@ -324,7 +324,7 @@ class Radial extends Pie {
 
       let elPath = graphics.drawPath({
         d: '',
-        stroke: pathFill.path,
+        stroke: pathFill.fill,
         strokeWidth,
         fill: 'none',
         fillOpacity: w.config.fill.opacity,
